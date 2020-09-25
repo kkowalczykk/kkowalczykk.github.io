@@ -1,17 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import todoimg from '../media/todo.jpg';
+// import todoimg from '../media/todo.jpg';
+import { Link } from 'react-router-dom';
 
 const Box = styled.div`
       width: 81vw;
       min-height: 54vw;
       background-color: white;
-      box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.35);
+      box-shadow: 0px 5px 5px 2px rgba(0,0,0,0.35);
       margin: 10px 10px;
       display: flex;
       flex-direction: column;
       position: relative;
       overflow: hidden;
+      border-radius: 5px;
 
       &:hover{
             .mask{
@@ -42,16 +44,32 @@ const Mask = styled.div`
       height: 100%;
       position: absolute;
       bottom: -100%;
-      background-color: rgba(208, 0, 255, 0.33);
+      background-color: rgba(86,0,106,0.4);
       visibility: hidden;
       transition: 0.3s;
+      display: flex;
+      justify-content: center;
+`
+
+const ShowDetailsButton = styled(Link)`
+      width: 30%;
+      height: 20%;
+      background-color: white;
+      font-size: 1.1em;  
+      align-self: center;
+      border: solid 1px rgb(68,12,115);
+      color: rgb(68,12,115);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
 `
 
 
 const Title = styled.h2`
       text-align: center;
       font-size: 1.0em;
-      color: rgb(68 12 115);
+      color: rgb(68,12,115);
       background: none;
       position: relative;
       &::after{
@@ -64,6 +82,9 @@ const Title = styled.h2`
             left: 10%;
             
       }
+      @media screen and (min-width: 1480px){
+            font-size: 1.3em;
+      }
 `
 
 const ImageContainer = styled.div`
@@ -74,14 +95,19 @@ const Image = styled.img`
       width: 100%;
       height: auto;
 `
-const ProjectBox = () => {
+const ProjectBox = (props) => {
       return (
             <Box>
-                  <Title>User Authorization System</Title>
+                  <Title>{props.name}</Title>
                   <ImageContainer>
-                        <Image src={todoimg} />
+                        <Image src={props.img} />
                   </ImageContainer>
-                  <Mask className='mask'></Mask>
+                  <Mask className='mask'>
+                        <ShowDetailsButton to={{
+                              pathname: "/test",
+                              state: { properties: props }
+                        }}>Details</ShowDetailsButton>
+                  </Mask>
             </Box>
       );
 }

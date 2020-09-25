@@ -8,6 +8,7 @@ import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Skills from './components/Skills';
+import ProjectDetails from './components/ProjectDetails';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/skills' component={Skills} />
           <Route path='/projects' component={Projects} />
           <Route path='/contact' component={Contact} />
+          <Route path='/test' component={ProjectDetails} />
         </section>
       </Router>
     </div>

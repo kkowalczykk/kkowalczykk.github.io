@@ -1,7 +1,7 @@
 import React from 'react';
 import Particles from 'react-particles-js';
 
-const ParticlesComponent = () => {
+const ParticlesComponent = (props) => {
       return (
 
             <Particles
@@ -14,7 +14,7 @@ const ParticlesComponent = () => {
                                     color: "rgb(185, 43, 224)",
                                     distance: 150,
                                     enable: true,
-                                    opacity: 0.5,
+                                    opacity: props.opacity,
                                     width: 1,
                               },
                               collisions: {
@@ -36,7 +36,7 @@ const ParticlesComponent = () => {
                                     value: 90,
                               },
                               opacity: {
-                                    value: 0.5,
+                                    value: props.opacity,
                               },
                               shape: {
                                     type: "circle",

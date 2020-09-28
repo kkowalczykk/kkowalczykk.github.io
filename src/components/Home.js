@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ParticlesComponent from './ParticlesComponent';
 import styled from 'styled-components';
 import Typical from 'react-typical';
@@ -41,6 +41,8 @@ const AnimatedText = styled(Typical)`
 `
 
 const Home = () => {
+
+
       return (
             <Wrapper>
                   <ParticlesComponent />

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import todoimg from '../media/todo.jpg';
 import { Link } from 'react-router-dom';
 
 const Box = styled.div`

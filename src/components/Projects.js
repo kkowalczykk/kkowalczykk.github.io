@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Typical from 'react-typical';
 import ProjectBox from './ProjectBox';
-import todoimg from '../media/todo.jpg';
+import todoimg from '../media/projects/todo.jpg';
 
 const Wrapper = styled.div`
       width: 100%;
@@ -11,13 +10,6 @@ const Wrapper = styled.div`
       flex-direction: column;
 `
 
-const Header = styled(Typical)`
-      font-size: 1.9em;
-      color: rgb(208, 0, 255);
-      font-family: 'Nunito', sans-serif !important;
-      padding-left: 10px;
-      padding-right: 10px;
-`
 const Container = styled.div`
       width: 100%;
       max-width: 1920px;
@@ -29,7 +21,11 @@ const Container = styled.div`
 
 
 
-const Projects = () => {
+const Projects = (props) => {
+      useEffect(() => {
+            props.updateTitle('Projects');
+
+      })
       const projectList = [
             {
                   name: 'Mock Data Generator',
@@ -51,12 +47,7 @@ const Projects = () => {
 
       return (
             <Wrapper>
-                  <Header steps={['', 300, '<Projects/>']} />
                   <Container>
-                        {/* <ProjectBox name="elo elo"></ProjectBox>
-                        <ProjectBox name='elo elo'></ProjectBox>
-                        <ProjectBox name='elo elo'></ProjectBox>
-                        <ProjectBox name='elo elo'></ProjectBox> */}
                         {projectList.map((project, index) =>
                               <ProjectBox key={index} name={project.name} description={project.description} linkRepo={project.linkRepo}
                                     linkLive={project.linkLive} technologies={project.technologies} img={project.img}></ProjectBox>

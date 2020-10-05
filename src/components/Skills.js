@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import reactimg from '../media/skills/react.png';
 import nodeimg from '../media/skills/nodejs.png';
+import gsap from 'gsap';
 
 const Wrapper = styled.div`
       width: 100%;
-      height: 100%;
+      max-height: 100%;
       display: flex;
       flex-direction: column;
+      padding-bottom: 100px;
 `
 
 const SkillsWrapper = styled.div`
@@ -135,15 +137,31 @@ const SkillText = styled.p`
 `
 
 const Skills = (props) => {
+      const container = useRef(null);
+
       useEffect(() => {
             props.updateTitle('Skills');
 
-      })
+            const tl = gsap.timeline({ defaults: { ease: 'slowMo.in' } });
+            // Animations
+            const elements = Array.from(container.current.children);
+            elements.map((item, id) => {
+                  //gsap.set(item, { transformOrigin: '50% 100%' });
+                  if (item.className.includes('left')) {
+                        gsap.set(item, { transformOrigin: '100% 50%' });
+                        tl.fromTo(item, { opacity: '0', scaleX: '0.5' }, { duration: '0.4', scaleX: '1', opacity: '1' });
+                  }
+                  else {
+                        gsap.set(item, { transformOrigin: '0% 50%' });
+                        tl.fromTo(item, { opacity: '0', scaleX: '0.5' }, { duration: '0.4', scaleX: '1', opacity: '1' });
+                  }
+            })
+      }, [])
 
       const test = ['essa', 'test', 'fsfa', 'asfsa', 'ss']
       return (
             <Wrapper>
-                  <SkillsWrapper>
+                  <SkillsWrapper ref={container}>
                         {test.map((el, id) => //el - element of array
                               <SkillContainer key={id} className={(id % 2 === 0) ? 'left' : 'right'}>
                                     <ImageContainer>

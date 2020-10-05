@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import ProjectBox from './ProjectBox';
 import todoimg from '../media/projects/todo.jpg';
+import gsap from 'gsap';
 
 const Wrapper = styled.div`
       width: 100%;
@@ -22,10 +23,25 @@ const Container = styled.div`
 
 
 const Projects = (props) => {
+      const container = useRef(null);
+
       useEffect(() => {
             props.updateTitle('Projects');
+            const tl = gsap.timeline({ defaults: { ease: 'slowMo.in' } });
+            // Animations
+            const elements = Array.from(container.current.children);
+            console.log(elements);
+            elements.map((item, id) => {
+                  gsap.set(item, { transformOrigin: '50% 100%' });
+                  tl.fromTo(item, { x: '-100', opacity: '0', scale: '0.5' }, { duration: '0.4', x: '0', opacity: '1', scale: '1' });
+            })
 
-      })
+
+
+
+      }, []);
+
+
       const projectList = [
             {
                   name: 'Mock Data Generator',
@@ -43,11 +59,35 @@ const Projects = (props) => {
                   technologies: ['Angular', 'Bootstrap', 'Charts.js'],
                   img: todoimg,
             },
+            {
+                  name: 'COVID-19 Tracker',
+                  description: 'It is an application that tracks world COVID-19 infections statistic. Data comes from covid19-api and mathdro-covid-api Created with Angular, Bootstrap.',
+                  linkRepo: 'https://github.com/kkowalczykk/covid-tracker',
+                  linkLive: 'https://kkowalczykk.github.io/covid-tracker/world',
+                  technologies: ['Angular', 'Bootstrap', 'Charts.js'],
+                  img: todoimg,
+            },
+            {
+                  name: 'COVID-19 Tracker',
+                  description: 'It is an application that tracks world COVID-19 infections statistic. Data comes from covid19-api and mathdro-covid-api Created with Angular, Bootstrap.',
+                  linkRepo: 'https://github.com/kkowalczykk/covid-tracker',
+                  linkLive: 'https://kkowalczykk.github.io/covid-tracker/world',
+                  technologies: ['Angular', 'Bootstrap', 'Charts.js'],
+                  img: todoimg,
+            },
+            {
+                  name: 'COVID-19 Tracker',
+                  description: 'It is an application that tracks world COVID-19 infections statistic. Data comes from covid19-api and mathdro-covid-api Created with Angular, Bootstrap.',
+                  linkRepo: 'https://github.com/kkowalczykk/covid-tracker',
+                  linkLive: 'https://kkowalczykk.github.io/covid-tracker/world',
+                  technologies: ['Angular', 'Bootstrap', 'Charts.js'],
+                  img: todoimg,
+            },
       ]
 
       return (
-            <Wrapper>
-                  <Container>
+            <Wrapper >
+                  <Container ref={container}>
                         {projectList.map((project, index) =>
                               <ProjectBox key={index} name={project.name} description={project.description} linkRepo={project.linkRepo}
                                     linkLive={project.linkLive} technologies={project.technologies} img={project.img}></ProjectBox>

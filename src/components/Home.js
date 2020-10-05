@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import ParticlesComponent from './ParticlesComponent';
 import styled from 'styled-components';
 import Typical from 'react-typical';
+import gsap from 'gsap';
 
 const Wrapper = styled.div`
       display: flex;
@@ -41,10 +42,18 @@ const AnimatedText = styled(Typical)`
 `
 
 const Home = () => {
+      const wrapper = useRef(null);
 
-
+      useEffect(() => {
+            const tl = gsap.timeline({ defaults: { ease: 'power3.in' } });
+            // Animations
+            const elements = Array.from(wrapper.current.children);
+            console.log(elements)
+            const particles = elements[0];
+            tl.from(particles, { opacity: 0, duration: '2.5' });
+      })
       return (
-            <Wrapper>
+            <Wrapper ref={wrapper}>
                   <ParticlesComponent />
                   <Box>
                         <Text>Hello, my name is Karol</Text>

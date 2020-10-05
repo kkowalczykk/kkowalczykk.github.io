@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import gsap from 'gsap';
 
 const Wrapper = styled.div`
       display: flex;
@@ -11,7 +12,7 @@ const Wrapper = styled.div`
       left: 0;
       width: 100vw;
       height: 55px;
-      z-index: 1;
+      z-index: 5;
       box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.35);
       transition: height 0.4s;
       
@@ -138,13 +139,25 @@ const Navbar = () => {
 
       const [navStatus, setStatus] = useState(false);
 
+      const wrapper = useRef(null);
+
+      useEffect(() => {
+            const tl = gsap.timeline({ defaults: { ease: 'power3.in' } });
+            const element = wrapper.current;
+            tl.from(element, { y: '-100', duration: '1.5' });
+            const outNav = document.querySelector('section');
+            outNav.addEventListener('click', () => {
+                  setStatus(false);
+            })
+      }, []);
 
       let handleStatus = () => {
             setStatus(!navStatus);
       }
 
+
       return (
-            <Wrapper className={navStatus ? 'active' : null} >
+            <Wrapper ref={wrapper} className={navStatus ? 'active' : null} >
                   <NavLinks className={navStatus ? 'active' : null}>
                         <Link onClick={handleStatus} to='/' exact>Home</Link>
                         <Link onClick={handleStatus} to='/about'>About</Link>

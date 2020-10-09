@@ -34,7 +34,7 @@ const Box = styled.div`
             min-height: 333px;
       }
       @media screen and (min-width: 1480px){
-            width: 700px;
+            width: 600px;
             min-height: 467px;
       }
 `

@@ -18,6 +18,8 @@ const Wrapper = styled.section`
   padding-top: 55px;
   box-sizing: border-box;
   position: relative;
+  display: flex;
+  flex-direction: column;
 `
 
 function App() {

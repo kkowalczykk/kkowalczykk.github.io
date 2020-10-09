@@ -27,17 +27,17 @@ const SkillsWrapper = styled.div`
             width: 60%; 
       }
       @media screen and (min-width: 1240px){
-            width: 55%;
-      }
-      @media screen and (min-width: 1480px){
-            width: 45%;
+            width: 90%;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
       }
 `
 
 const SkillContainer = styled.div`
       width: 90%;
       min-height: 70px;
-      margin: 10px 0;
+      margin: 15px 10px;
       background-color: white;
       box-shadow: 0px 3px 3px 1px rgba(0,0,0,0.35);
       border-radius: 5px;
@@ -62,15 +62,12 @@ const SkillContainer = styled.div`
       @media screen and (min-width: 1024px){
             width: 80%;
             min-height: 80px;
-            
       }
       @media screen and (min-width: 1240px){
-            width: 80%;
-           
+            width: 40%;
+            margin: 20px 15px;
       }
-      @media screen and (min-width: 1480px){
-            width: 80%;
-      }
+      
 `
 
 const ImageContainer = styled.div`
@@ -149,16 +146,16 @@ const Skills = (props) => {
                   //gsap.set(item, { transformOrigin: '50% 100%' });
                   if (item.className.includes('left')) {
                         gsap.set(item, { transformOrigin: '100% 50%' });
-                        tl.fromTo(item, { opacity: '0', scaleX: '0.5' }, { duration: '0.4', scaleX: '1', opacity: '1' });
+                        tl.fromTo(item, { opacity: '0', scaleX: '0.5' }, { duration: '0.3', scaleX: '1', opacity: '1' });
                   }
                   else {
                         gsap.set(item, { transformOrigin: '0% 50%' });
-                        tl.fromTo(item, { opacity: '0', scaleX: '0.5' }, { duration: '0.4', scaleX: '1', opacity: '1' });
+                        tl.fromTo(item, { opacity: '0', scaleX: '0.5' }, { duration: '0.3', scaleX: '1', opacity: '1' });
                   }
             })
       }, [])
 
-      const test = ['essa', 'test', 'fsfa', 'asfsa', 'ss']
+      const test = ['essa', 'test', 'fsfa', 'asfsa', 'ss', 's']
       return (
             <Wrapper>
                   <SkillsWrapper ref={container}>

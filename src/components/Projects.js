@@ -9,6 +9,7 @@ const Wrapper = styled.div`
       height: 100%;
       display: flex;
       flex-direction: column;
+      margin-bottom: 50px;
 `
 
 const Container = styled.div`
@@ -33,7 +34,7 @@ const Projects = (props) => {
             console.log(elements);
             elements.map((item, id) => {
                   gsap.set(item, { transformOrigin: '50% 100%' });
-                  tl.fromTo(item, { x: '-100', opacity: '0', scale: '0.5' }, { duration: '0.4', x: '0', opacity: '1', scale: '1' });
+                  tl.fromTo(item, { x: '-100', opacity: '0', scale: '0.5' }, { duration: '0.5', x: '0', opacity: '1', scale: '1' }, id * 0.2);
             })
 
 

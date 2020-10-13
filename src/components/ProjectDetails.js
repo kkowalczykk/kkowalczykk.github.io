@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import gsap from 'gsap';
+import { useHistory } from 'react-router-dom';
+
 
 const Wrapper = styled.div`
       width: 100%;
       height: 100%;
       display: flex;
       flex-direction: column;
+      margin-bottom: 50px;
 `
 
 const ImageContainer = styled.div`
@@ -73,22 +77,57 @@ const TechBox = styled.div`
       margin: 5px 10px;
 `
 
+const BackButton = styled.div`
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90px;
+      height: 30px;
+      margin-bottom: 20px;
+      margin-left: 30px;
+      background-color: rgb(100, 5, 130);
+      color: white;
+      cursor:pointer;
+      transition: all ease-in-out 0.3s;
+      &:hover{
+            background-color: rgb(120, 5, 160);
+      }
+`
+
 const ProjectDetails = (props) => {
       let { description, img, linkLive, linkRepo, name, technologies } = props.location.state.properties;
+      let history = useHistory();
+      const imgElement = useRef(null);
+      const descElement = useRef(null);
+      const btnElement = useRef(null);
+      const techElement = useRef(null);
+
+
       useEffect(() => {
             props.updateTitle(name);
-      })
+            const tl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
+            tl.fromTo(imgElement.current, { opacity: '0', y: '-50', }, { opacity: '1', y: '0', duration: '0.5' });
+            tl.fromTo(descElement.current, { opacity: '0', y: '-50', }, { opacity: '1', y: '0', duration: '0.5' });
+            tl.fromTo(btnElement.current, { opacity: '0', y: '-50', }, { opacity: '1', y: '0', duration: '0.5' });
+            tl.fromTo(techElement.current, { opacity: '0', y: '-50', }, { opacity: '1', y: '0', duration: '0.5' });
+      }, [])
+
+      const goBack = () => {
+            history.push('/projects');
+      }
+
       return (
             <Wrapper>
-                  <ImageContainer>
+                  <BackButton onClick={goBack}>Go back</BackButton>
+                  <ImageContainer ref={imgElement}>
                         <Image src={img}></Image>
                   </ImageContainer>
-                  <Desc>{description}</Desc>
-                  <BoxCenter>
+                  <Desc ref={descElement}>{description}</Desc>
+                  <BoxCenter ref={btnElement}>
                         <LinkButton href={linkRepo} target="_blank">Repository</LinkButton>
                         <LinkButton href={linkLive} target="_blank">Check Live</LinkButton>
                   </BoxCenter>
-                  <BoxLeft>
+                  <BoxLeft ref={techElement}>
                         {technologies.map((tech, id) =>
                               <TechBox key={id}>{tech}</TechBox>
                         )}

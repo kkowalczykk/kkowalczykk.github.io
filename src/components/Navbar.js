@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import gsap from 'gsap';
 
+
 const Wrapper = styled.div`
       display: flex;
       justify-content: flex-end;
@@ -135,6 +136,10 @@ position: relative;
 }
 `
 
+
+
+
+
 const Navbar = () => {
 
       const [navStatus, setStatus] = useState(false);
@@ -158,6 +163,7 @@ const Navbar = () => {
 
       return (
             <Wrapper ref={wrapper} className={navStatus ? 'active' : null} >
+
                   <NavLinks className={navStatus ? 'active' : null}>
                         <Link onClick={handleStatus} to='/' exact>Home</Link>
                         <Link onClick={handleStatus} to='/about'>About</Link>

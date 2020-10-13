@@ -12,6 +12,7 @@ import ProjectDetails from './components/ProjectDetails';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import styled from 'styled-components';
+import { useEffect } from 'react';
 
 const Wrapper = styled.section`
   min-height: 100vh;
@@ -32,6 +33,7 @@ function App() {
     <div>
       <Router>
         <Navbar />
+        <ScrollToTop></ScrollToTop>
         <Wrapper>
           {title === 'Home' ? null : <Header title={title}></Header>}
           <Route path='/' exact render={(props) => <Home {...props} updateTitle={setTitle} />} />
@@ -45,6 +47,15 @@ function App() {
       </Router>
 
     </div >
+  );
+}
+
+function ScrollToTop() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
+  return (
+    <React.Fragment />
   );
 }
 

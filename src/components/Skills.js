@@ -1,15 +1,26 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import reactimg from '../media/skills/react.png';
-import nodeimg from '../media/skills/nodejs.png';
 import gsap from 'gsap';
+import figma from '../media/skills/figma.png';
+import angular from '../media/skills/angular.png';
+import express from '../media/skills/express.png';
+import git from '../media/skills/git.png';
+import html from '../media/skills/html.png';
+import js from '../media/skills/js.png';
+import mongodb from '../media/skills/mongodb.png';
+import nodejs from '../media/skills/nodejs.png';
+import photoshop from '../media/skills/photoshop.png';
+import react from '../media/skills/react.png';
+import sass from '../media/skills/sass.png';
+import styledimg from '../media/skills/styled.png';
+import vscode from '../media/skills/vscode.png';
+import bootstrap from '../media/skills/bootstrap.png';
 
 const Wrapper = styled.div`
       width: 100%;
-      max-height: 100%;
       display: flex;
       flex-direction: column;
-      padding-bottom: 100px;
+      margin-bottom: 50px;
 `
 
 const SkillsWrapper = styled.div`
@@ -73,7 +84,7 @@ const SkillContainer = styled.div`
 const ImageContainer = styled.div`
       width:60px;
       min-width: 60px;
-      
+      padding: 4px;
       background-color: white;
       display: flex;
       align-self: center;
@@ -146,29 +157,100 @@ const Skills = (props) => {
                   //gsap.set(item, { transformOrigin: '50% 100%' });
                   if (item.className.includes('left')) {
                         gsap.set(item, { transformOrigin: '100% 50%' });
-                        tl.fromTo(item, { opacity: '0', scaleX: '0.5' }, { duration: '0.3', scaleX: '1', opacity: '1' });
+                        tl.fromTo(item, { opacity: '0', scaleX: '0.5' }, { duration: '0.7', scaleX: '1', opacity: '1' }, id * 0.2);
                   }
                   else {
                         gsap.set(item, { transformOrigin: '0% 50%' });
-                        tl.fromTo(item, { opacity: '0', scaleX: '0.5' }, { duration: '0.3', scaleX: '1', opacity: '1' });
+                        tl.fromTo(item, { opacity: '0', scaleX: '0.5' }, { duration: '0.7', scaleX: '1', opacity: '1' }, id * 0.2);
                   }
             })
       }, [])
 
-      const test = ['essa', 'test', 'fsfa', 'asfsa', 'ss', 's']
+      const test = [
+            {
+                  title: 'HTML',
+                  desc: 'Writing semantic html 🤓',
+                  img: html
+            },
+            {
+                  title: 'JavaScript',
+                  desc: 'Using JS ES6+ 👌',
+                  img: js
+            },
+            {
+                  title: 'Sass',
+                  desc: 'Using Sass for styling 🎨',
+                  img: sass
+            },
+            {
+                  title: 'React',
+                  desc: 'Creating frontend with React (prefer hooks) ⚛',
+                  img: react
+            },
+            {
+                  title: 'Angular',
+                  desc: 'Creating frontend with Angular 🅰',
+                  img: angular
+            },
+            {
+                  title: 'NodeJS',
+                  desc: 'Basic knowledge of creating backend with nodeJS',
+                  img: nodejs
+            },
+            {
+                  title: 'Express',
+                  desc: 'Basic knowledge of express framework',
+                  img: express
+            },
+            {
+                  title: 'MongoDB',
+                  desc: 'Storing data with MongoDB',
+                  img: mongodb,
+            },
+            {
+                  title: 'Styled-Components',
+                  desc: 'Styling React components with styled-components 💅',
+                  img: styledimg
+            },
+            {
+                  title: 'Bootstrap',
+                  desc: 'Basics of bootstrap library',
+                  img: bootstrap,
+            },
+            {
+                  title: 'Visual Studio Code',
+                  desc: 'Using vscode for coding 😊',
+                  img: vscode
+            },
+            {
+                  title: 'Figma',
+                  desc: 'Basic knowledge of designing in Figma 👨‍🎨',
+                  img: figma
+            },
+            {
+                  title: 'GIT',
+                  desc: 'Using GIT for controlling code version 👨‍💻',
+                  img: git
+            },
+            {
+                  title: 'Photoshop',
+                  desc: 'Basisc of editing raster graphics in photoshop',
+                  img: photoshop
+            },
+      ]
       return (
             <Wrapper>
                   <SkillsWrapper ref={container}>
                         {test.map((el, id) => //el - element of array
                               <SkillContainer key={id} className={(id % 2 === 0) ? 'left' : 'right'}>
                                     <ImageContainer>
-                                          <Image src={reactimg}></Image>
+                                          <Image src={el.img}></Image>
                                     </ImageContainer>
                                     <SkillContent className={(id % 2 === 0) ? 'left' : 'right'}>
-                                          <SkillTitle>React</SkillTitle>
+                                          <SkillTitle>{el.title}</SkillTitle>
                                           <SkillDivider></SkillDivider>
                                           <SkillText className={(id % 2 === 0) ? 'left' : 'right'}>
-                                                Using React to build User Interface. Rad sbahf bkhfa jksab asjfjka
+                                                <span>{el.desc}</span>
                                           </SkillText>
                                     </SkillContent>
                               </SkillContainer>

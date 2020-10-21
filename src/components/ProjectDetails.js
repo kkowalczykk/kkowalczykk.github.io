@@ -30,21 +30,49 @@ const Desc = styled.p`
 
 const LinkButton = styled.a`
       display: flex;
-      flex-wrap: wrap;
-      min-width: 130px;
-      min-height: 40px;
+      font-size: 0.9em;
+      min-width: 100px;
+      min-height: 30px;
       background-color: white;
       text-decoration: none;
       align-items: center;
       justify-content: center;
-      transition: 0.3s;
       color: black;
       align-self: center;
       border-radius: 20px;
-      border: 3px solid black;
+      border: 2px solid black;
       margin: 20px 5px;
-      &:hover{
-            background-color: rgb(142, 18, 199);
+      padding: 0 5px;
+      overflow: hidden;
+      position: relative;
+      &:hover {
+      background: transparent;
+      box-shadow: 0 0 10px 7px rgba(139, 16, 173, 0.5);
+
+            &::before {
+                  transform: translateX(100%);
+            }
+      }
+      &::before {
+                  position: absolute;
+                  content: "";
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background: linear-gradient(
+                        120deg,
+                        transparent,
+                        rgb(139, 16, 173),
+                        transparent
+                  );
+                  transform: translateX(-100%);
+                  transition: 0.5s;
+            }
+      @media screen and (min-width: 768px){
+            font-size: 1em;
+            min-width: 130px;
+            min-height: 40px;
       }
 `
 

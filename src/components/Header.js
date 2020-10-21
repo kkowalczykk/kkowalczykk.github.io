@@ -3,7 +3,7 @@ import Typical from 'react-typical';
 import styled from 'styled-components';
 
 const Title = styled(Typical)`
-      font-size: 1.6em;
+      font-size: 1.2em;
       color: rgb(68,12,115);
       font-family: 'Nunito', sans-serif !important;
       padding-left: 30px;

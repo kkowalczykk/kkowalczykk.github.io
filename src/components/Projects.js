@@ -8,6 +8,7 @@ import carappimg from '../media/projects/car_app.jpg';
 import portfolioimg from '../media/projects/portfolio.jpg';
 import sortingimg from '../media/projects/sorting.jpg';
 import userauthimg from '../media/projects/user_auth.jpg';
+import mockimg from '../media/projects/mock_data.jpg';
 import gsap from 'gsap';
 
 const Wrapper = styled.div`
@@ -63,9 +64,9 @@ const Projects = (props) => {
                   name: 'Mock Data Generator',
                   description: 'It is an application that generate customized random data as JSON Object. Created with Angular, faker.js and Bootsrap.',
                   linkRepo: 'https://github.com/kkowalczykk/mock-data-generator',
-                  linkLive: '#',
+                  linkLive: 'https://kkowalczykk.github.io/mock-data-generator/',
                   technologies: ['Angular', 'Bootstrap', 'Faker.js'],
-                  img: todoimg,
+                  img: mockimg,
             },
             {
                   name: 'COVID-19 Tracker',

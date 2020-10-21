@@ -74,16 +74,39 @@ const Content = styled.div`
 const CvButton = styled.div`
       width: 200px;
       height: 30px;
-      background-color: rgb(68,12,115);
-      color: white;
+      background-color: white;
+      color: rgb(68,12,115);
+      border: 2px solid rgb(68,12,115);
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: 0.3s all ease-in-out;
       margin-top: 30px;
-      &:hover{
-            background-color: rgb(85,10, 140);
+      position: relative;
+      overflow: hidden;
+      &:hover {
+      background: transparent;
+      box-shadow: 0 0 10px 7px rgba(139, 16, 173, 0.5);
+
+            &::before {
+                  transform: translateX(100%);
+            }
       }
+      &::before {
+                  position: absolute;
+                  content: "";
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background: linear-gradient(
+                        120deg,
+                        transparent,
+                        rgb(139, 16, 173),
+                        transparent
+                  );
+                  transform: translateX(-100%);
+                  transition: 0.5s;
+            }
 `
 
 const Contact = (props) => {
@@ -113,7 +136,7 @@ const Contact = (props) => {
                         <ContactScene></ContactScene>
                   </SvgContainer>
                   <Content ref={text}>
-                        <p>You can find me in these places. Feel free to hit me up with a message 📩👐</p>
+                        <p>You can find me in these places. Feel free to hit me up with a message <span role="img">📩👐</span></p>
                         <li>
                               <ul><a target="_blank" rel="noopener noreferrer" href="https://github.com/kkowalczykk"><AiFillGithub className='icon'></AiFillGithub> kkowalczykk</a></ul>
                               <ul><a target="_blank" rel="noopener noreferrer" href="mailto:kovalczyk97@gmail.com"><AiOutlineMail className='icon'></AiOutlineMail> kovalczyk97@gmail.com</a></ul>

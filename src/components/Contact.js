@@ -102,7 +102,7 @@ const Contact = (props) => {
             const svgtl = gsap.timeline({ defaults: { ease: 'power3.inOut' } });
             svgtl.fromTo(person, { opacity: '0', y: '200', }, { opacity: '1', y: '0', duration: '1' })
             svgtl.fromTo(primary, { opacity: '0', y: '100', }, { opacity: '1', y: '0', duration: '0.6' }, 1)
-            svgtl.fromTo(secondary, { opacity: '0', y: '-100', }, { opacity: '1', y: '0', duration: '1.3' }, 1.5)
+            svgtl.fromTo(secondary, { opacity: '0', x: '75', }, { opacity: '1', x: '0', duration: '1.3' }, 1.5)
 
             //Animate rest of elements
             gsap.fromTo(text.current, { opacity: '0', y: '-50', }, { opacity: '1', y: '0', duration: '1' })

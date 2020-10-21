@@ -2,6 +2,12 @@ import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import ProjectBox from './ProjectBox';
 import todoimg from '../media/projects/todo.jpg';
+import covidimg from '../media/projects/covid.jpg';
+import chatimg from '../media/projects/chat.jpg';
+import carappimg from '../media/projects/car_app.jpg';
+import portfolioimg from '../media/projects/portfolio.jpg';
+import sortingimg from '../media/projects/sorting.jpg';
+import userauthimg from '../media/projects/user_auth.jpg';
 import gsap from 'gsap';
 
 const Wrapper = styled.div`
@@ -45,10 +51,19 @@ const Projects = (props) => {
 
       const projectList = [
             {
+                  name: 'Chatting App',
+                  description: 'App that allows to chat with people. Created with NodeJS, Socket.io, React.',
+                  linkRepo: 'https://github.com/kkowalczykk/chatting-app-client',
+                  linkRepoBack: 'https://github.com/kkowalczykk/chatting-app-server',
+                  linkLive: 'https://chatting-app-front.netlify.app/',
+                  technologies: ['Angular', 'Bootstrap', 'Faker.js'],
+                  img: chatimg,
+            },
+            {
                   name: 'Mock Data Generator',
                   description: 'It is an application that generate customized random data as JSON Object. Created with Angular, faker.js and Bootsrap.',
-                  linkRepo: 'https://github.kkowalczykk.com',
-                  linkLive: 'https://github.kkowalczykk.com',
+                  linkRepo: 'https://github.com/kkowalczykk/mock-data-generator',
+                  linkLive: '#',
                   technologies: ['Angular', 'Bootstrap', 'Faker.js'],
                   img: todoimg,
             },
@@ -58,31 +73,41 @@ const Projects = (props) => {
                   linkRepo: 'https://github.com/kkowalczykk/covid-tracker',
                   linkLive: 'https://kkowalczykk.github.io/covid-tracker/world',
                   technologies: ['Angular', 'Bootstrap', 'Charts.js'],
-                  img: todoimg,
+                  img: covidimg,
             },
             {
                   name: 'Sorting Algorithms Visualizer',
                   description: 'It is an application that tracks world COVID-19 infections statistic. Data comes from covid19-api and mathdro-covid-api Created with Angular, Bootstrap.',
-                  linkRepo: 'https://github.com/kkowalczykk/covid-tracker',
-                  linkLive: 'https://kkowalczykk.github.io/covid-tracker/world',
+                  linkRepo: 'https://github.com/kkowalczykk/Sorting-Visualizer',
+                  linkLive: 'https://kkowalczykk.github.io/Sorting-Visualizer/',
                   technologies: ['React'],
-                  img: todoimg,
+                  img: sortingimg,
             },
             {
                   name: 'User Authorization System',
                   description: 'It is an application that tracks world COVID-19 infections statistic. Data comes from covid19-api and mathdro-covid-api Created with Angular, Bootstrap.',
                   linkRepo: 'https://github.com/kkowalczykk/covid-tracker',
+                  linkRepoBack: 'https://github.com/kkowalczykk/carApp-angular',
                   linkLive: 'https://kkowalczykk.github.io/covid-tracker/world',
                   technologies: ['NodeJS', 'Express', 'MongoDB', 'React', 'Styled Components'],
-                  img: todoimg,
+                  img: userauthimg,
             },
             {
                   name: 'My portfolio',
-                  description: 'It is an application that tracks world COVID-19 infections statistic. Data comes from covid19-api and mathdro-covid-api Created with Angular, Bootstrap.',
-                  linkRepo: 'https://github.com/kkowalczykk/covid-tracker',
-                  linkLive: 'https://kkowalczykk.github.io/covid-tracker/world',
+                  description: 'My personal portfolio website which you are currently looking at. Created with React.',
+                  linkRepo: 'https://github.com/kkowalczykk/kkowalczykk.github.io',
+                  linkLive: '#',
                   technologies: ['React', 'Styled Components', 'GSAP'],
-                  img: todoimg,
+                  img: portfolioimg,
+            },
+            {
+                  name: 'Car Manager App',
+                  description: 'Application is a simple CRUD API created with Java(Spring) integrated with Angular Frontend. Data are stored in Heroku PosgreSQL database.',
+                  linkRepo: 'https://github.com/kkowalczykk/carApp-angular',
+                  linkRepoBack: 'https://github.com/kkowalczykk/carApp-crud-api',
+                  linkLive: 'https://kkowalczykk.github.io/carApp-angular/',
+                  technologies: ['Java', 'Spring', 'Angular', 'Bootstrap'],
+                  img: carappimg,
             },
       ]
 
@@ -91,7 +116,7 @@ const Projects = (props) => {
                   <Container ref={container}>
                         {projectList.map((project, index) =>
                               <ProjectBox key={index} name={project.name} description={project.description} linkRepo={project.linkRepo}
-                                    linkLive={project.linkLive} technologies={project.technologies} img={project.img}></ProjectBox>
+                                    linkRepoBack={project.linkRepoBack} linkLive={project.linkLive} technologies={project.technologies} img={project.img}></ProjectBox>
                         )}
                   </Container>
             </Wrapper>

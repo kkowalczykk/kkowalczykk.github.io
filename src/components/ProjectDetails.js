@@ -30,8 +30,9 @@ const Desc = styled.p`
 
 const LinkButton = styled.a`
       display: flex;
-      width: 140px;
-      height: 40px;
+      flex-wrap: wrap;
+      min-width: 130px;
+      min-height: 40px;
       background-color: white;
       text-decoration: none;
       align-items: center;
@@ -95,7 +96,7 @@ const BackButton = styled.div`
 `
 
 const ProjectDetails = (props) => {
-      let { description, img, linkLive, linkRepo, name, technologies } = props.location.state.properties;
+      let { description, img, linkLive, linkRepo, linkRepoBack, name, technologies } = props.location.state.properties;
       let history = useHistory();
       const imgElement = useRef(null);
       const descElement = useRef(null);
@@ -125,6 +126,7 @@ const ProjectDetails = (props) => {
                   <Desc ref={descElement}>{description}</Desc>
                   <BoxCenter ref={btnElement}>
                         <LinkButton href={linkRepo} target="_blank">Repository</LinkButton>
+                        {linkRepoBack ? <LinkButton href={linkRepoBack} target="_blank">Backend Repository</LinkButton> : null}
                         <LinkButton href={linkLive} target="_blank">Check Live</LinkButton>
                   </BoxCenter>
                   <BoxLeft ref={techElement}>

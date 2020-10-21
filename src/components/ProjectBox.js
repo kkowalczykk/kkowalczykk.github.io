@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Box = styled.div`
       width: 81vw;
-      min-height: 54vw;
+      min-height: 48vw;
       background-color: white;
       box-shadow: 0px 5px 5px 2px rgba(0,0,0,0.35);
       margin: 10px 10px;
@@ -13,7 +13,7 @@ const Box = styled.div`
       position: relative;
       overflow: hidden;
       border-radius: 5px;
-
+      padding-bottom: 10px;
       &:hover{
             .mask{
                   visibility: visible;;
@@ -23,19 +23,19 @@ const Box = styled.div`
 
       @media screen and (min-width: 768px){
             width: 60vw;
-            min-height: 40vw;
+            min-height: 35vw;
       }
       @media screen and (min-width: 1024px){
             width: 420px;
-            min-height: 280px;
+            min-height: 240px;
       }
       @media screen and (min-width: 1240px){
             width: 500px;
-            min-height: 333px;
+            min-height: 300px;
       }
       @media screen and (min-width: 1480px){
             width: 600px;
-            min-height: 467px;
+            min-height: 380px;
       }
 `
 const Mask = styled.div`
@@ -59,6 +59,7 @@ const ShowDetailsButton = styled(Link)`
       border: solid 1px rgb(68,12,115);
       color: rgb(68,12,115);
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-decoration: none;
@@ -88,7 +89,10 @@ const Title = styled.h2`
 
 const ImageContainer = styled.div`
       width: 90%;
+      flex-grow: 1;
       align-self: center;
+      display: flex;
+      align-items: center;
 `
 const Image = styled.img`
       width: 100%;
